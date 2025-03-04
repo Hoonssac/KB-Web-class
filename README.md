@@ -1,8 +1,9 @@
-![image](https://github.com/user-attachments/assets/42ea10bf-48fd-4597-b20c-4b61f94046d9)
+# 🪙KB IT's Your Life 6기
+### 웹 표준 HTML,CSS,JavaScript 실습
 
+---
 
-## 📍목차
-### 웹 표준 HTML,CSS,JavaScript
+### 📍목차
 - 웹 개요와 실습 환경 구축
 - 웹 페이지 기본 구조와 작성 방법
 - HTML5 기본 태그

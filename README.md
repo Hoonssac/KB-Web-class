@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/8a881a80-d90a-49c4-8a1f-42917bf8be69)
+![image](https://github.com/user-attachments/assets/42ea10bf-48fd-4597-b20c-4b61f94046d9)
+
 
 ## 📍목차
 ### 웹 표준 HTML,CSS,JavaScript

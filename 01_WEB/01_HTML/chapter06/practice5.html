@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Chill Guy의 방</title>
+    <style>
+      body {
+        background-color: #d5f3ff;
+        height: 200vh;
+      }
+      h1 {
+        text-align: center;
+      }
+      .room {
+        background-image: url('https://i.pinimg.com/736x/36/45/2f/36452f97ca15a4979d1bc5a03dfc816b.jpg');
+        background-size: auto 100%;
+        width: 600px;
+        height: 200px;
+        margin: 0 auto;
+        border: 5px solid rgb(78, 78, 78);
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .furniture {
+        background-color: white;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 5px 5px 10px black;
+      }
+
+      .chair {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .tv {
+        position: fixed;
+        bottom: 10px;
+        right: 19px;
+      }
+
+      .content {
+        width: 800px;
+        height: 150px;
+        background-color: white;
+        text-align: center;
+        margin: 10px auto;
+        align-content: center;
+        font-size: 20px;
+        border-radius: 30px;
+        box-shadow: 0px 3px 10px 0px black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chill Guy의 방 리모델링</h1>
+
+    <!-- 방 영역 (벽지 포함) -->
+    <div class="room">
+      <div class="furniture bed">🛏️ 침대</div>
+      <div class="furniture chair">🪑 의자</div>
+    </div>
+
+    <!-- 내용 영역 -->
+    <div class="content">
+      <p>
+        Chill Guy의 방에는 편안한 가구와 함께, 벽에 Chill한 벽지가 붙어
+        있습니다.
+      </p>
+      <p>
+        스크롤을 내려보세요! TV는 항상 화면 오른쪽 하단에 고정되어 있습니다.
+      </p>
+    </div>
+
+    <!-- 화면 고정 TV -->
+    <div class="furniture tv">📺 TV - Chill 뉴스</div>
+  </body>
+</html>

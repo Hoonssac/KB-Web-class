@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let charmander = { name: '파이리', level: 14, evolution: '리자드' };
+      let pikachu = { name: '피카츄', level: 20, evolution: null };
+
+      // 여기에 함수를 작성하세요!
+      function levelUp(pocketmon) {
+        pocketmon.level += 1;
+        console.log(
+          `${pocketmon.name}의 레벨이 ${pocketmon.level}이(가) 되었다!`
+        );
+        if (pocketmon.level >= 16 && pocketmon.evolution != null) {
+          console.log(
+            `${pocketmon.name}이(가) ${pocketmon.evolution}으(로) 진화했다!`
+          );
+
+          pocketmon.name = pocketmon.evolution;
+          pocketmon.evolution = null;
+        }
+      }
+
+      levelUp(charmander);
+      levelUp(charmander);
+      levelUp(pikachu);
+    </script>
+  </head>
+  <body></body>
+</html>

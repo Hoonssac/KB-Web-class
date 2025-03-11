@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let nowAccount = document.getElementById('balanceDisplay');
+        let button = document.getElementById('checkBalanceBtn');
+
+        button.addEventListener('click', () => {
+          let account = Math.random() * 0.9 + 0.1;
+          nowAccount.innerHTML =
+            '잔액: ' + Math.floor(account * 1000000).toLocaleString() + '원';
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <button id="checkBalanceBtn">잔액 조회</button>
+    <p id="balanceDisplay">잔액: ? 원</p>
+  </body>
+</html>

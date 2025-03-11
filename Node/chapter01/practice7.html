@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const histories = [];
+
+      function addTransaction(price) {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        let ba = '';
+        if (date.getHours() >= 12) {
+          ba = '오후';
+        } else if (date.getHours() < 12) {
+          ba = '오전';
+        }
+        const hour = date.getHours();
+        const min = date.getMinutes();
+        const sec = date.getSeconds();
+
+        const hist = { price, year, month, day, ba, hour, min, sec };
+
+        histories.push(hist);
+        const pos = document.getElementById('transactionHistory');
+        pos.innerHTML = '';
+        for (let i = histories.length - 1; i >= 0; i--) {
+          pos.innerHTML +=
+            '<li>' +
+            Number(histories[i].price).toLocaleString() +
+            '원 이체 완료 - ' +
+            histories[i].year +
+            '. ' +
+            histories[i].month +
+            '. ' +
+            histories[i].day +
+            '. ' +
+            histories[i].ba +
+            ' ' +
+            histories[i].hour +
+            ':' +
+            histories[i].min +
+            ':' +
+            histories[i].sec;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <ul id="transactionHistory"></ul>
+
+    <button onclick="addTransaction(100000)">100,000원 이체</button>
+    <button onclick="addTransaction(50000)">50,000원 이체</button>
+  </body>
+</html>

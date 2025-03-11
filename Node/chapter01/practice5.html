@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        let newsList = [];
+
+        let button = document.getElementById('addNewsBtn');
+        button.addEventListener('click', () => {
+          let news = document.getElementById('newsInput').value;
+          let list = document.getElementById('newsList');
+          newsList.push(news);
+          console.log(newsList);
+
+          if (news == '') {
+            alert('뉴스 내용을 입력하세요.');
+          } else {
+            let input = '';
+            for (let i = 0; i < newsList.length; i++) {
+              input += '<li>' + newsList[i] + '</li>';
+            }
+            list.innerHTML = input;
+          }
+          document.getElementById('newsInput').value = '';
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" id="newsInput" placeholder="금융 뉴스 입력" />
+    <button id="addNewsBtn">뉴스 추가</button>
+    <ul id="newsList"></ul>
+  </body>
+</html>

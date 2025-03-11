@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const searchInput = document.getElementById('searchInput');
+        const stockList = document.getElementById('stockList');
+        const companies = ['삼성전자', '네이버', '카카오', 'LG화학'];
+
+        searchInput.addEventListener('change', () => {
+          stockList.innerHTML = '';
+          let text = searchInput.value;
+          let filteredList;
+          if (text.length > 0) {
+            filteredList = companies.filter((company) =>
+              company.includes(text)
+            );
+          } else {
+            filteredList = [...companies];
+          }
+
+          for (let company of filteredList) {
+            stockList.innerHTML += `<li>${company}</li>`;
+          }
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="text" id="searchInput" placeholder="종목 검색" />
+    <ul id="stockList">
+      <li>삼성전자</li>
+      <li>네이버</li>
+      <li>카카오</li>
+      <li>LG화학</li>
+    </ul>
+  </body>
+</html>

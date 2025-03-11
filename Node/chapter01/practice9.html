@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const currentPrice = 75000;
+        const button = document.getElementById('setTargetBtn');
+        const input = document.getElementById('targetPrice');
+        const output = document.getElementById('alertMessage');
+
+        button.addEventListener('click', () => {
+          let price = input.value;
+          if (price > currentPrice) {
+            output.textContent = '아직 목표 주가에 도달하지 않았습니다.';
+          } else {
+            output.textContent = '목표 주가 도달! 풀매도 드가자~';
+          }
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="number" id="targetPrice" placeholder="목표 주가 입력" />
+    <button id="setTargetBtn">목표 설정</button>
+    <p id="alertMessage"></p>
+  </body>
+</html>

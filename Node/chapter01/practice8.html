@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const input = document.getElementById('krwInput');
+        const output = document.getElementById('usdResult');
+
+        input.addEventListener('change', () => {
+          let dollar = (Number(input.value) / 1300).toFixed(2);
+          output.textContent = `달러(USD): ${dollar}`;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input type="number" id="krwInput" placeholder="원화 입력" />
+    <p id="usdResult">달러(USD):</p>
+  </body>
+</html>

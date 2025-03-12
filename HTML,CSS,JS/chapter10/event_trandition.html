@@ -2,15 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" ccontent="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traditional Event</title>
     <script>
-      // 이벤트를 연결합니다.
       window.onload = function () {
-        // 문서 객체를 선택합니다.
         let button = document.getElementById('button');
 
-        // 이벤트를 연결합니다.
+        // 2. 고전 이벤트 모델 : script안에서 요소를 찾은 후 이벤트 연결
         button.onclick = function () {
           alert('click');
         };

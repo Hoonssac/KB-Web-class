@@ -1,0 +1,12 @@
+[
+  {
+    "title": "기초 펫 돌봄",
+    "discription": "기초적인 펫 돌봄 방법을 배웁니다.",
+    "completed": true
+  },
+  {
+    "title": "건강관리",
+    "discription": "펫의 건강을 유지하는 방법을 배웁니다.",
+    "completed": true
+  }
+]

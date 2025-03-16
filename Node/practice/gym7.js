@@ -1,38 +1,13 @@
-fs = require('fs');
+const fs = require('fs').promises;
 const listPath = './Node/practice/members/logs/reservations.txt';
 
 const name = '이승기';
 const field = '스피닝';
 
-// function enter() {
-//   return new Promise((resolve) => {
-//     fs.readFile(listPath, 'utf-8', (err, data) => {
-//       if (err) {
-//         console.error(err);
-//         return;
-//       }
-
-//       if (data.includes(name)) {
-//         resolve(`${name} 회원님은 이미 예약되어 있습니다.`);
-//       } else {
-//         setTimeout(() => {
-//           fs.appendFileSync(listPath, `\n${name}: ${field}`);
-//           console.log(`${name} 회원님의 ${field} 예약이 완료되었습니다.`);
-//           resolve('예약 기록이 파일에 저장되었습니다!');
-//         }, 1000);
-//       }
-//     });
-//   });
-// }
-
 async function enter() {
   try {
     // fs.promises.readFile을 사용하여 파일 읽기
-    const data = await fs.readFile(listPath, 'utf-8');
-
-    // 기존 예약 목록 확인
-    console.log('현재 예약 목록:');
-    console.log(data);
+    const data = await fs.readFile(listPath, { encoding: 'utf-8' });
 
     if (data.includes(name)) {
       return `${name} 회원님은 이미 예약되어 있습니다.`;

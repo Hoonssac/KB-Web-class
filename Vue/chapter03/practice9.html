@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model.number="num" />
+      <div v-if="num < 17">
+        아직 준비할 항목<br />
+        <ul>
+          <li v-for="(item, index) in todo" :key="index">{{item}}</li>
+        </ul>
+      </div>
+      <div v-else>
+        <p>
+          마감 임박! 아래 항목 중 마지막으로 남은 준비: {{todo[todo.length-1]}}
+        </p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            todo: ['편지 작성', '편지 검토', '봉투 밀봉', '스탬프 찍기'],
+            num: 0,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

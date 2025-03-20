@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { x: 0, y: 0, sum: 0 };
+        },
+        // watch : 특정 데이터를 감시해서 변경 전후 값 파악 가능
+        // 관찰하고 싶은 데이터명과 이름이 동일해야 한다
+        watch: {
+          // current : 현재 사용자가 입력한 값, old: 그전에 있던 값
+          x(current, old) {
+            console.log('## x : ${old} --> ${current}');
+            var result = Number(current) + Number(this.y);
+            if (isNaN(result)) this.sum = 0;
+            else this.sum = result;
+          },
+          y(current, old) {
+            console.log('## y : ${old} --> ${current}');
+            var result = Number(this.x) + Number(current);
+            if (isNaN(result)) this.sum = 0;
+            else this.sum = result;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

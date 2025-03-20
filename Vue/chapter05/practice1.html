@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <div id="app">
+      ✏️이름: <input type="text" v-model="name" /><br />
+      ✏️나이: <input type="text" v-model="age" /> <br /><br />
+      <button @click="checkAdmission">입학 승인</button>
+      <p>{{message}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            name: '',
+            age: '',
+            message: '',
+          };
+        },
+        methods: {
+          checkAdmission() {
+            this.message = '';
+            if (this.name.length < 2) {
+              this.message = '❗이름은 2글자 이상 입력해주세요.';
+            } else if (/\d/.test(this.name)) {
+              this.message = '❗이름에는 숫자가 포함할 수 없습니다.';
+            } else if (this.age < 11 || this.age > 18) {
+              this.message = '❗나이는 11세 이상 18세 이하로 입력해주세요.';
+            } else {
+              this.message = `⭐${this.name}, ${this.age}세, 호그와트 입학을 축하합니다!`;
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

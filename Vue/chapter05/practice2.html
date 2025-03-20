@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="selectWand('엘더 지팡이')">엘더 지팡이</button>
+      <button @click="selectWand('단풍 지팡이')">단풍 지팡이</button>
+      <button @click="selectWand('벚나무 지팡이')">벚나무 지팡이</button>
+      <button @click="resetWand">지팡이 초기화</button>
+      <p>{{ message }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            selectedWand: '',
+            message: '',
+          };
+        },
+        methods: {
+          selectWand(wand) {
+            if (this.selectedWand === wand) {
+              this.message = `이미 ${wand}을 선택했습니다. 다른 지팡이를 선택하세요!`;
+            } else {
+              this.selectedWand = wand;
+              this.message = `당신은 ${wand}을 선택했습니다.`;
+            }
+          },
+          resetWand() {
+            this.selectedWand = '';
+            this.message = '지팡이를 다시 선택해주세요';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>사용자목록</h2>
+      정렬기준:
+      <label>
+        <input type="radio" name="standard" value="id" v-model="sortKey" />id
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="standard"
+          value="name"
+          v-model="sortKey"
+        />name</label
+      >
+      <label>
+        <input
+          type="radio"
+          name="standard"
+          value="username"
+          v-model="sortKey"
+        />username
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="standard"
+          value="phone"
+          v-model="sortKey"
+        />phone
+      </label>
+      <br />
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>username</th>
+            <th>phone</th>
+            <th>company</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(user, index) in sortedUsers" :key="user.id">
+            <td>{{index+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.company.split('-')[0]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      const users = [
+        {
+          id: 1,
+          name: 'Leanne Graham',
+          username: 'Bret',
+          phone: '1-770-736-8031 x56442',
+          company: 'Romaguera-Crona',
+        },
+        {
+          id: 2,
+          name: 'Ervin Howell',
+          username: 'Antonette',
+          phone: '010-692-6593 x09125',
+          company: 'Deckow-Crist',
+        },
+        {
+          id: 3,
+          name: 'Clementine Bauch',
+          username: 'Samantha',
+          phone: '1-463-123-4447',
+          company: 'Romaguera-Jacobson',
+        },
+        {
+          id: 4,
+          name: 'Patricia Lebsack',
+          username: 'Karianne',
+          phone: '493-170-9623 x156',
+          company: 'Robel-Corkery',
+        },
+        {
+          id: 5,
+          name: 'Chelsey Dietrich',
+          username: 'Kamren',
+          phone: '(254)954-1289',
+          company: 'Keebler LLC',
+        },
+        {
+          id: 6,
+          name: 'Mrs. Dennis Schulist',
+          username: 'Leopoldo_Corkery',
+          phone: '1-477-935-8478 x6430',
+          company: 'Considine-Lockman',
+        },
+        {
+          id: 7,
+          name: 'Kurtis Weissnat',
+          username: 'Elwyn.Skiles',
+          phone: '210.067.6132',
+          company: 'Johns Group',
+        },
+        {
+          id: 8,
+          name: 'Nicholas Runolfsdottir V',
+          username: 'Maxime_Nienow',
+          phone: '586.493.6943 x140',
+          company: 'Abernathy Group',
+        },
+        {
+          id: 9,
+          name: 'Glenna Reichert',
+          username: 'Delphine',
+          phone: '(775)976-6794 x41206',
+          company: 'Yost and Sons',
+        },
+        {
+          id: 10,
+          name: 'Clementina DuBuque',
+          username: 'Moriah.Stanton',
+          phone: '024-648-3804',
+          company: 'Hoeger LLC',
+        },
+      ];
+
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { users, sortKey: 'id' };
+        },
+        computed: {
+          sortedUsers() {
+            return this.users.slice().sort((a, b) => {
+              if (a[this.sortKey] < b[this.sortKey]) return -1;
+              if (a[this.sortKey] > b[this.sortKey]) return 1;
+              return 0;
+            });
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

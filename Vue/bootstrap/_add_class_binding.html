@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Framework</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div :class="isActive? fa-smile: fa-frawn">Hello</div>
+    <!-- isActice가 true면 active 클래스 적용, hasError가 true면 error 클래스 적용 -->
+    <div :class="{active:; isActive, error: hasError}">Hello</div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            acticve: 'className',
+            isActive: true,
+            hasError: false,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

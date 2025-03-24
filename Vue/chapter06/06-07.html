@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Title</title>
+    <style>
+      .buttonColor {
+        background-color: aqua;
+        color: black;
+      }
+      .buttonLayout {
+        text-align: center;
+        width: 120px;
+      }
+      .staticBorder {
+        border: Khaki dashed 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 체크 여부에 따라서 isMyLayout의 boolean값 양방향 바인딩 -->
+    <!-- isMyLayout의 값에 따라서 true일 경우에만 myLayout 클래스 적용 -->
+    <div id="app">
+      <input type="checkbox" v-model="isMyLayout" />레이아웃 작동 여부<br />
+      <button class="staticBorder" :class="[myColor, isMyLayout? myLayout: '']">
+        테스트 버튼
+      </button>
+    </div>
+
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            myColor: 'buttonColor',
+            myLayout: 'buttonLayout',
+            isMyLayout: false,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

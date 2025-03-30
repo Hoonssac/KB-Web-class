@@ -1,11 +1,11 @@
-# 🪙KB IT's Your Life 6기
+# 🪙 KB IT's Your Life 6기
 
 
 ![image](https://github.com/user-attachments/assets/7d426152-e4c0-4e40-a3e9-28947b945059)
 
 
 ---
-## 🖥️프론트엔드
+## 🖥️ FE
 
 ### 📍웹 표준 HTML,CSS,JavaScript
 - 웹 개요와 실습 환경 구축

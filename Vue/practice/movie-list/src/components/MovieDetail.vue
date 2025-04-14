@@ -1,12 +1,17 @@
 <template>
   <div>
     <h1>영화 상세 정보</h1>
-    <!-- <img :src="movie.poster" /> -->
-    <p>{{ movie.title }}</p>
-    <p>{{ movie.year }}</p>
-    <p>{{ movie.director }}</p>
-    <p>{{ movie.description }}</p>
-    <router-link to="/">← 영화 목록으로 돌아가기</router-link>
+    <!-- 데이터가 로드되었을 때만 렌더링 -->
+    <div v-if="movie">
+      <h1>{{ movie.title }} ({{ movie.year }})</h1>
+      <h2>감독: {{ movie.director }}</h2>
+      <h2>줄거리: {{ movie.description }}</h2>
+      <img :src="movie.poster" />
+    </div>
+    <!-- 로딩 중 메시지 -->
+    <div v-else>
+      <p>로딩 중...</p>
+    </div>
   </div>
 </template>
 
@@ -33,3 +38,9 @@ const fetchMovie = async () => {
 // 컴포넌트가 마운트될 때 fetchMovie 호출
 onMounted(fetchMovie);
 </script>
+
+<style>
+img {
+  width: 35rem;
+}
+</style>

@@ -16,3 +16,5 @@ import { inject } from 'vue';
 
 const movieList = inject('movieList');
 </script>
+
+<style></style>

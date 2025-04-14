@@ -1,8 +1,13 @@
 <template>
   <div>
     <h1>📽️ 지브리 영화 리스트</h1>
+    <button @click="openModal" class="add-movie-button">영화 추가하기</button>
+    <AddMovieModal
+      v-if="isModalOpen"
+      @close="closeModal"
+      @movie-added="fetchMovies"
+    />
     <router-view />
-    <!-- 현재 라우트에 따라 컴포넌트를 렌더링 -->
   </div>
 </template>
 
@@ -23,13 +28,23 @@ const listUrl = 'http://localhost:3000/movies';
 // 반응형으로 관리될 영화 목록 데이터 선언
 const movieList = ref([]);
 
-/**
- * fetchMovies 함수
- * - 비동기로 영화 데이터를 API에서 가져와 movieList에 저장
- */
+// 비동기로 영화 데이터를 API에서 가져와 movieList에 저장
 const fetchMovies = async () => {
   const response = await axios.get(listUrl);
   movieList.value = response.data;
+};
+
+// 모달 열림 상태
+const isModalOpen = ref(false);
+
+// 모달 열기
+const openModal = () => {
+  isModalOpen.value = true;
+};
+
+// 모달 닫기
+const closeModal = () => {
+  isModalOpen.value = false;
 };
 
 // 컴포넌트가 마운트될 때 fetchMovies 함수 실행
@@ -38,3 +53,20 @@ onMounted(fetchMovies);
 // movieList 데이터를 하위 컴포넌트에서 사용할 수 있도록 provide로 전달
 provide('movieList', movieList);
 </script>
+
+<style>
+.add-movie-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.add-movie-button:hover {
+  background-color: #45a049;
+}
+</style>

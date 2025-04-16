@@ -13,10 +13,7 @@ public class ArrayCreateByValueListExample1 {
         season[1] = "여름";
         System.out.println("season[1] : " + season[1]);
         System.out.println();
-        39
-        6
-        Ⅰ 배열(Array) 타입
-                .ArrayCreateByValueListExample1.java
+
         //배열 변수 선언과 배열 생성
         int[] scores = { 83, 90, 87 };
         //총합과 평균 구하기

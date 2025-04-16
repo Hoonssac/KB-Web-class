@@ -13,6 +13,6 @@ public class p06 {
             }
         }
         System.out.println("총합 : " + total);
-        System.out.println("평균 : " + total / count);
+        System.out.printf("평균 : %.1f%n" , (double) total / count);
     }
 }

@@ -1,4 +1,4 @@
-package ch09.adapter1;
+package ch09.designpattern.adapter;
 
 public class Banner {
     private String string;

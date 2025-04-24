@@ -1,4 +1,4 @@
-package ch09.designpattern.adapter;
+package designpattern.adapter;
 
 public class Main {
     public static void main(String[] args) {

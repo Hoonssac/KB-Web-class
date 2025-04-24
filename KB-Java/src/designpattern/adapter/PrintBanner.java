@@ -1,4 +1,4 @@
-package ch09.designpattern.adapter;
+package designpattern.adapter;
 
 public class PrintBanner extends Print{
     private Banner banner;

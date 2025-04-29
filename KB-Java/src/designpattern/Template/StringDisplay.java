@@ -1,4 +1,4 @@
-package designpattern.template;
+package designpattern.Template;
 
 public class StringDisplay extends AbstractDisplay {
     private String string; // 표시해야 하는 문자열

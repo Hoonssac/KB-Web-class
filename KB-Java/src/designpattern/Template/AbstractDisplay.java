@@ -1,4 +1,4 @@
-package designpattern.template;
+package designpattern.Template;
 
 public abstract class AbstractDisplay {
     public abstract void open();

@@ -1,4 +1,4 @@
-package designpattern.template;
+package designpattern.Template;
 
 public class Main {
     public static void main(String[] args) {

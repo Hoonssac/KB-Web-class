@@ -1,4 +1,4 @@
-package designpattern.template;
+package designpattern.Template;
 
 public class CharDisplay extends AbstractDisplay {
     private char ch; // 표시해야 하는 문자

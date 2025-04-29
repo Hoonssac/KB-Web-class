@@ -1,4 +1,4 @@
-package designpattern.adapter;
+package designpattern.Adapter;
 
 public abstract class Print {
     public abstract void printWeak();

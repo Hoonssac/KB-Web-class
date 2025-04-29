@@ -1,4 +1,4 @@
-package designpattern.adapter;
+package designpattern.Adapter;
 
 public class Banner {
     private String string;

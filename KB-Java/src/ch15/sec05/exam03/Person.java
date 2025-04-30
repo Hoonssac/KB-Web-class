@@ -9,6 +9,8 @@ public class Person implements Comparable<Person> {
         this.age = age;
     }
 
+    // Comparable을 구현하려면 오바리이딩 필수
+    // compareTo : 자기 자신과 외부에서 받아온 값 비교
     @Override
     public int compareTo(Person o) {
         if (age < o.age) {

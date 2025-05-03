@@ -4,8 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import static ch15.practice.Main.dollHistoryManager;
-import static ch15.practice.Main.dollStackManager;
+import static ch15.practice.Main.*;
 
 // 대기열 관리 기능 제공 (등록/제거/조회)
 public class DollQueueManager {
@@ -24,7 +23,7 @@ public class DollQueueManager {
             System.out.println("🎉 " + customer + " 님! 인형 뽑기 하러 오세요!");
             String doll = dollStackManager.storeRandomdoll();
             dollHistoryManager.addHistory(customer, doll);
-
+            dollPopularityManager.addDoll(doll);
             Scanner sc = new Scanner(System.in);
             System.out.print("👉 " + customer + " 님, 한 번 더 뽑으시겠습니까? (y/n): ");
             String input = sc.nextLine();

@@ -4,11 +4,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        FileService fs = new FileService();
+
         Command[] commands = {
-                new AddCommand(),
-                new OpenCommand(),
-                new PrintCommand(),
-                new ExitCommand()
+                // new AddCommand(),
+                () -> System.out.println("Add Commmand"),
+                // new OpenCommand(),
+                fs::open, // () -> fs.open()
+                // new PrintCommand(),
+                fs::print, // () -> fs.print()
+                // new ExitCommand()
+                Main::exit
         };
 
         while (true) {
@@ -18,6 +24,17 @@ public class Main {
             int sel = sc.nextInt();
 
             commands[sel - 1].execute();
+        }
+    }
+
+    public static void exit() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("종료할까요?(Y/n) ");
+        String answer = sc.nextLine();
+
+        sc.close();
+        if (answer.isEmpty() || answer.equalsIgnoreCase("Y")) {
+            System.exit(0);
         }
     }
 }

@@ -29,3 +29,23 @@ from tbl_travel_image;
 select *
 from tbl_travel_image;
 
+drop table if exists tbl_restaurant;
+create table tbl_restaurant
+(
+    id          int auto_increment not null primary key,
+    name        varchar(100),
+    category    varchar(100),
+    address     varchar(255),
+    description text
+);
+
+select * from tbl_restaurant_review;
+
+CREATE TABLE tbl_restaurant_review (
+                                       no INT AUTO_INCREMENT PRIMARY KEY,
+                                       restaurant_id INT,
+                                       writer VARCHAR(100),
+                                       content TEXT,
+                                       score INT,
+                                       FOREIGN KEY (restaurant_id) REFERENCES tbl_restaurant(id) ON DELETE CASCADE
+);

@@ -1,0 +1,20 @@
+<configuration>
+<!--    콘솔에 로그를 출력하는 appender를 정의합니다. -->
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %-4relative [%thread] %-5level %logger{30} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+<!--    MongoDB 드라이버의 로그 레벨을 INFO로 설정합니다. -->
+<!--    상세: TRACE - DEBUG - INFO - WARN - ERROR -->
+<!--    INFO 설정 시, INFO/WARN/ERROR 출력 -->
+    <logger name="org.mongodb.driver.connection" level="INFO" additivity="true"/>
+<!--    루트 로거의 로그 레벨을 INFO로 설정하고, CONSOLE appender를 사용합니다.-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

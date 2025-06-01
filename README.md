@@ -88,6 +88,7 @@
 - Chain of Responsibility
 
 ## 🖥️ 03. 데이터베이스 활용과 모델링
+### 📍 MySQL 기반 RDBMS 활용과 JDBC
 - DBMS 개요
 - MySQL 설치
 - 테스트 데이터베이스
@@ -105,6 +106,29 @@
 - 데이터 모델링
 - 정규화
 - 트랜잭션
+
+### 📍 NoSQL 기반 MongoDB
+- 최신 웹을 위한 도큐먼트 데이터베이스
+- 자바스크립트 셀을 통한 MongoDB
+- 쿼리 작성하기
+- MongoDB Java 연동
+- MongoDB Java POJO 연동
+
+
+## 🖥️ 04. 서버사이드 컴포넌트 백엔드 개발
+### 📍 Servlet, JSP, JSTL 기반 서버 프로그래밍
+- 웹 애플리케이션 개요
+- 웹 애플리케이션 프로젝트
+- 서블릿으 ㅣ이해
+- JSP의 이해
+- JSP 문법
+- HTML5 Form 태그와 서블릿
+- 서블릿 고급 - 세션, 쿠키
+- 필터
+- 요청 포워딩, 리다이렉트
+- EL, JSTL
+- FrontController
+
 
 
 ---

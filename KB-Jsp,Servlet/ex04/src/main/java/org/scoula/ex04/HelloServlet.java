@@ -1,4 +1,4 @@
-package org.scoula.dynamicweb;
+package org.scoula.ex04;
 
 import java.io.*;
 

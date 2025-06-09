@@ -1,24 +1,23 @@
 package org.scoula.config;
 
 import org.scoula.beans.Parrot;
+import org.scoula.beans.Person;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "org.scoula.beans")
 public class ProjectConfig {
-
 	@Bean
-	public Parrot parrot1() {
+	public Parrot parrot() {
 		Parrot p = new Parrot();
 		p.setName("Koko");
 		return p;
 	}
 	@Bean
-	public Parrot parrot2() {
-		Parrot p = new Parrot();
-		p.setName("Miki");
+	public Person person(Parrot parrot) {
+		Person p = new Person();
+		p.setName("Ella");
+		p.setParrot(parrot);
 		return p;
 	}
 }

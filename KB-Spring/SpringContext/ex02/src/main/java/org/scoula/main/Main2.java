@@ -8,9 +8,10 @@ public class Main2 {
 	public static void main(String[] args) {
 		var context = new AnnotationConfigApplicationContext(ProjectConfig2.class);
 
+		// 내부적으로 Person2에 이미 Parrot2가 주입되어있음
 		Person2 p = context.getBean(Person2.class);
 
-		System.out.println("Person's name" + p.getName());
+		System.out.println("Person's name: " + p.getName());
 		System.out.println("Person's parrot: " + p.getParrot());
 	}
 }

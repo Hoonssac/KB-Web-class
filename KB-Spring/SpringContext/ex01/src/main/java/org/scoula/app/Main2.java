@@ -13,6 +13,7 @@ public class Main2 {
 
 		var context = new AnnotationConfigApplicationContext(ProjectConfig2.class);
 
+		// 이름이 중복되지 않도록 지정하여 추출 가능
 		Parrot p = context.getBean("miki", Parrot.class);
 		System.out.println(p.getName());
 	}

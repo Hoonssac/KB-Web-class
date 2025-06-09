@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Parrot {
 	private String name;
 
-	@PostConstruct
+	@PostConstruct // bean이 생성된 후 자동으로 호출 -> 초기화
 	public void init() {
 		this.name = "Kiki";
 	}

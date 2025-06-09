@@ -8,10 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@EnableWebMvc // FrontController (DispatcherServlet)
+@EnableWebMvc // Spring MVC 기능 활성화. FrontController (DispatcherServlet)
 @ComponentScan(basePackages = {"org.scoula.controller"}) // Spring MVC용 컴포넌트 등록을 위한 스캔 패키지
 public class ServletConfig implements WebMvcConfigurer {
 
+	// 정적 자원 처리 설정 (CSS, JS, 이미지 등)
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry
@@ -24,7 +25,7 @@ public class ServletConfig implements WebMvcConfigurer {
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		InternalResourceViewResolver bean = new InternalResourceViewResolver();
 
-		bean.setViewClass(JstlView.class);
+		bean.setViewClass(JstlView.class); // JSTL 뷰
 		bean.setPrefix("/WEB-INF/views/");
 		bean.setSuffix(".jsp");
 

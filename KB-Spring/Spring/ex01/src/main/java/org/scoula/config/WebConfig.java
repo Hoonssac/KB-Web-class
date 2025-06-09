@@ -8,26 +8,29 @@ import javax.servlet.Filter;
 
 // web.xml을 대체하는 설정
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+	// Root Application 설정 (Service, DAO, DB 등)
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] {RootConfig.class};
 	}
 
+	// Servlet Application 설정 (Controller, ViewResolver 등)
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] {ServletConfig.class};
 	}
 
-	// 스프링의 FrontController인 DispatcherServlet이 담당할 url 매핑 패턴, / : 모든 요청에 대한 매핑
+	// DispatcherServlet의 URL 매핑
 	@Override
 	protected String[] getServletMappings() {
+		// 모든 요청을 DispatcherServlet이 처리
 		return new String[] {"/"};
 	}
 
-	// POST body 문자 인코딩 필터 설정 - UTF-8 설정
+	// 한글 POST 요청 인코딩 필터 설정
+	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
 

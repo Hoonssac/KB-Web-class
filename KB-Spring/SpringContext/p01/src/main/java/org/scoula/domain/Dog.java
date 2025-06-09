@@ -22,6 +22,8 @@ public class Dog {
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return "[DOG] 이름: " + name + ", 견종: " + breed;
 	}
+
+
 }

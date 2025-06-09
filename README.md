@@ -129,6 +129,10 @@
 - EL, JSTL
 - FrontController
 
+### 📍 Spring Framework를 활용한 애플리케이션 개발
+- 스프링 컨텍스트 - 빈 정의
+- 스프링 컨텍스트 - 빈 작성
+- 스프링의 특징과 의존성 주입
 
 
 ---

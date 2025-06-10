@@ -22,8 +22,11 @@ public class Dog {
 
 	@Override
 	public String toString() {
-		return "[DOG] 이름: " + name + ", 견종: " + breed;
+		return "[" + breed + "] " + name;
 	}
 
-
+	public Dog(String name, String breed) {
+		this.name = name;
+		this.breed = breed;
+	}
 }

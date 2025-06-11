@@ -23,7 +23,10 @@ class TimeMapperTest {
 	@Test
 	@DisplayName("TimeMapper의 getTime()")
 	public void getTime() {
+		// Proxy로 생성된 구현 클래스 이름 출력
 		log.info(timeMapper.getClass().getName());
+
+		// 실제 DB에서 현재 시간 가져오기
 		log.info(timeMapper.getTime());
 	}
 

@@ -42,14 +42,17 @@ class RootConfigTest {
 	@Test
 	public void testSqlSessionFactory() {
 		try (
+			// MyBatis Session 열기
 			SqlSession session = sqlSessionFactory.openSession();
+
+			// Session을 통해 JDBC Connection 획득
 			Connection con = session.getConnection();
 		) {
-			log.info(session);
-			log.info(con);
+			log.info(session); // Session 정보 출력
+			log.info(con); // Connection 정보 출력
 
 		} catch (Exception e) {
-			fail(e.getMessage());
+			fail(e.getMessage()); // 실패 시 예외 메시지 출력
 		}
 	}
 }

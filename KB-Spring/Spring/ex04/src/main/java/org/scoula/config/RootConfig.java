@@ -17,9 +17,11 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource({"classpath:/application.properties"})
+@PropertySource({"classpath:/application.properties"}) // 설정 파일 위치 지정
 @MapperScan(basePackages = {"org.scoula.mapper"})
 public class RootConfig {
+
+	// application.properties에서 값 주입
 	@Value("${jdbc.driver}")
 	String driver;
 	@Value("${jdbc.url}")

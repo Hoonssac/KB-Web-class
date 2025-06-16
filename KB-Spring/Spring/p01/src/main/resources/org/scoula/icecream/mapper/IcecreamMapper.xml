@@ -13,4 +13,8 @@
         VALUES (#{name}, #{flavor}, #{price}, NOW())
     </insert>
 
+    <delete id="delete">
+        delete from icecream_db.tbl_icecream where no = #{no};
+    </delete>
+
 </mapper>

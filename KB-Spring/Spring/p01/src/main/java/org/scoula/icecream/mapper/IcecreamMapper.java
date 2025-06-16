@@ -11,4 +11,6 @@ public interface IcecreamMapper {
 	public List<IcecreamVO> getList();
 
 	public void insert(IcecreamVO vo);
+
+	public void delete(int no);
 }

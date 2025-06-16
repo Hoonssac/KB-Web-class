@@ -7,4 +7,5 @@ import org.scoula.icecream.dto.IcecreamDTO;
 public interface IcecreamService {
 	public List<IcecreamDTO> getList();
 	public void register(IcecreamDTO dto);
+	public void delete(int no);
 }

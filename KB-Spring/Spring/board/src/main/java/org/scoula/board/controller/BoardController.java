@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,9 +32,10 @@ public class BoardController {
 	}
 
 	@PostMapping("/create")
-	public String create(BoardDTO board) {
+	public String create(BoardDTO board, RedirectAttributes ra) {
 		log.info("create:" + board);
 		service.create(board);
+		ra.addAttribute("result", board.getNo());
 		return "redirect:/board/list";
 	}
 
@@ -44,16 +46,20 @@ public class BoardController {
 	}
 
 	@PostMapping("/update")
-	public String update(BoardDTO board) {
+	public String update(BoardDTO board, RedirectAttributes ra) {
+		if (service.update(board)) {
+			ra.addFlashAttribute("result", "success");
+		}
 		log.info("update:" + board);
-		service.update(board);
-		return "redirect:/board/list";
+		return "redirect:/board/get?no=" + board.getNo();
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("no") Long no) {
+	public String delete(@RequestParam("no") Long no, RedirectAttributes ra) {
 		log.info("delete......" + no);
-		service.delete(no);
+		if (service.delete(no)) {
+			ra.addFlashAttribute("result", "success");
+		}
 		return "redirect:/board/list";
 	}
 }

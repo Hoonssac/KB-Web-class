@@ -2,6 +2,7 @@ package org.scoula.board.mapper;
 
 import java.util.List;
 
+import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.domain.BoardVO;
 
 public interface BoardMapper {
@@ -15,4 +16,12 @@ public interface BoardMapper {
 	public int update(BoardVO boardVO);
 
 	public int delete(Long no);
+
+	public void createAttachment(BoardAttachmentVO attach);
+
+	public List<BoardAttachmentVO> getAttachmentList(Long bno);
+
+	public BoardAttachmentVO getAttachment(Long no);
+
+	public int deleteAttachment(Long no);
 }

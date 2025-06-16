@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 // web.xml을 대체하는 설정
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	final String LOCATION = "c:/upload";
+	final String LOCATION = "/Users/hoonssac/Desktop"; // 또는 /tmp/uploads
 	final long MAX_FILE_SIZE = 1024 * 1024 * 10L;
 	final long MAX_REQUEST_SIZE = 1024 * 1024 * 20L;
 	final int FILE_SIZE_THRESHOLD = 1024 * 1024 * 5;;

@@ -11,7 +11,9 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() {
-		log.info("==================> HomeController");
-		return "index"; // view의 이름
+		// log.info("==================> HomeController");
+		// return "index"; // view의 이름
+
+		return "redirect:/board/list";
 	}
 }

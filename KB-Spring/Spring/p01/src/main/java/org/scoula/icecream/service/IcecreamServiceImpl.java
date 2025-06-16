@@ -30,4 +30,9 @@ public class IcecreamServiceImpl implements IcecreamService {
 		IcecreamVO vo = dto.toVo();
 		mapper.insert(vo);
 	}
+
+	@Override
+	public void delete(int no) {
+		mapper.delete(no);
+	}
 }

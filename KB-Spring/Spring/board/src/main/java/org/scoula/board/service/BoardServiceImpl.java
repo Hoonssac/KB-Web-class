@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import javax.sound.midi.Soundbank;
+
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.domain.BoardVO;
 import org.scoula.board.dto.BoardDTO;
@@ -39,6 +41,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardDTO get(Long no) {
 		log.info("get........" + no);
+		System.out.println(mapper.get(no).getAttaches());
 		BoardDTO board = BoardDTO.of(mapper.get(no));
 		return Optional.ofNullable(board)
 			.orElseThrow(NoSuchElementException::new);
@@ -57,6 +60,7 @@ public class BoardServiceImpl implements BoardService{
 		List<MultipartFile> files = board.getFiles();
 		if (files != null && !files.isEmpty()) {
 			upload(boardVO.getNo(), files);
+			System.out.println("파일 업로드한다");
 		}
 	}
 

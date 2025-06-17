@@ -1,7 +1,15 @@
 package org.scoula.common.util;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,5 +26,25 @@ public class UploadFiles {
 		File dest = new File(baseDir, UploadFileName.getUniqueName(fileName));
 		part.transferTo(dest); // 지정한 경로로 업로드 파일 이동
 		return dest.getPath(); // 저장된 파일 경로 리턴
+	}
+
+	public static String getFormatSize(Long size) {
+		if (size <= 0) {
+			return "0";
+		}
+		final String[] units = new String[] {"Bytes", "KB", "MB", "GB", "TB"};
+		int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+		return new DecimalFormat("#,##0.#").format(size / Math.pow(1234, digitGroups)) + " " + units[digitGroups];
+	}
+
+	public static void download(HttpServletResponse response, File file, String orgName) throws Exception {
+		response.setContentType("application/download");
+		response.setContentLength((int)file.length());
+		String filename = URLEncoder.encode(orgName, "UTF-8"); // 한글 파일명인 경우 인코딩 필수
+		response.setHeader("Content-disposition", "attachment;filename=\"" + filename + "\"");
+		try(OutputStream os = response.getOutputStream();
+			BufferedOutputStream bos = new BufferedOutputStream(os)) {
+			Files.copy(Paths.get(file.getPath()), bos);
+		}
 	}
 }

@@ -2,6 +2,7 @@ package org.scoula.board.domain;
 
 import java.util.Date;
 
+import org.scoula.common.util.UploadFiles;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
@@ -31,5 +32,9 @@ public class BoardAttachmentVO {
 			.contentType(part.getContentType())
 			.size(part.getSize())
 			.build();
+	}
+
+	public String getFileSize() {
+		return UploadFiles.getFormatSize(size);
 	}
 }

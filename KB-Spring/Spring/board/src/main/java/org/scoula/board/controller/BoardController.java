@@ -1,13 +1,21 @@
 package org.scoula.board.controller;
 
+import java.io.File;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.dto.BoardDTO;
 import org.scoula.board.service.BoardService;
+import org.scoula.common.util.UploadFiles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
@@ -61,5 +69,16 @@ public class BoardController {
 			ra.addFlashAttribute("result", "success");
 		}
 		return "redirect:/board/list";
+	}
+
+	@GetMapping("/download/{no}")
+	@ResponseBody
+	public void download(@PathVariable("no") Long no, HttpServletResponse response) throws Exception {
+		BoardAttachmentVO attach = service.getAttachment(no);
+		log.info("download get");
+		System.out.println(attach);
+
+		File file = new File(attach.getPath());
+		UploadFiles.download(response, file, attach.getFilename());
 	}
 }

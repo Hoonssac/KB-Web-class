@@ -21,11 +21,13 @@
         ]]>
     </select>
 
-    <select id="get" resultType="BoardVO">
-        select *
-        from tbl_board
-        where no = #{no};
-
+    <select id="get" resultMap="boardMap">
+        select
+            b.no, b.title, b.content, b.writer, b.reg_date, b.update_date,
+            a.no as ano, a.bno, a.filename, a.path, a.content_type, a.size, a.reg_date as a_reg_date
+        from tbl_board b
+                 left outer join tbl_board_attachment a on b.no = a.bno
+        where b.no = #{no};
     </select>
 
     <update id="update">

@@ -28,7 +28,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {ServletConfig.class, WebSocketConfig.class};
+		return new Class[] {ServletConfig.class};
 	}
 
 	// 스프링의 FrontController인 DispatcherServlet이 담당할 url 매핑 패턴, / : 모든 요청에 대한 매핑

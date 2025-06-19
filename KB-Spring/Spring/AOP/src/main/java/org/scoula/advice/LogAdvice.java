@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.log4j.Log4j2;
 
-@Aspect
+@Aspect // AOP 기능 정의 클래스
 @Log4j2
 @Component
 public class LogAdvice {
-
+	// SampleService의 모든 메서드 실행 전에 로그 출력
 	@Before("execution(* org.scoula.sample.service.SampleService*.*(..))")
 	public void logBefore() {
 		log.info("========================================");

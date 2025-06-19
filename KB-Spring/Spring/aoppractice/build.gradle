@@ -57,13 +57,6 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-
-    implementation 'org.aspectj:aspectjrt:1.9.20'
-    implementation 'org.aspectj:aspectjweaver:1.9.20'
-
-    implementation "org.springframework:spring-websocket:${springVersion}"
-    implementation "org.springframework:spring-messaging:${springVersion}"
-    implementation "org.springframework.integration:spring-integration-stomp:5.5.20"
 }
 
 test {

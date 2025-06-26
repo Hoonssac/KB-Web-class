@@ -1,0 +1,1 @@
+import{_ as e,c as t,a as o,o as s}from"./index-BmIsrcO1.js";const r={__name:"BoardListPage",setup(_){return(n,a)=>(s(),t("div",null,a[0]||(a[0]=[o("h1",null,"Board List Page",-1)])))}},d=e(r,[["__scopeId","data-v-b00d846a"]]);export{d as default};

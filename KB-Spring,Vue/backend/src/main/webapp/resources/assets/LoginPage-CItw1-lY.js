@@ -1,0 +1,1 @@
+import{_ as a,c as o,a as t,o as s}from"./index-BmIsrcO1.js";const n={__name:"LoginPage",setup(r){return(_,e)=>(s(),o("div",null,e[0]||(e[0]=[t("h1",null,"Profile Page",-1)])))}},l=a(n,[["__scopeId","data-v-cf601729"]]);export{l as default};

@@ -1,0 +1,1 @@
+import{_ as a,c as s,a as o,o as r}from"./index-CYj-9iVK.js";const t={__name:"ChangePasswordPage",setup(n){return(_,e)=>(r(),s("div",null,e[0]||(e[0]=[o("h1",null,"Profile Page",-1)])))}},l=a(t,[["__scopeId","data-v-b4203686"]]);export{l as default};

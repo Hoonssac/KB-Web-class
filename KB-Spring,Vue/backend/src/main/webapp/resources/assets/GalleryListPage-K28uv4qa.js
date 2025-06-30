@@ -1,0 +1,1 @@
+import{_ as a,c as t,a as s,o}from"./index-CYj-9iVK.js";const r={__name:"GalleryListPage",setup(l){return(_,e)=>(o(),t("div",null,e[0]||(e[0]=[s("h1",null,"Board List Page",-1)])))}},c=a(r,[["__scopeId","data-v-8ef4a61a"]]);export{c as default};

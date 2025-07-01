@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.scoula.member.dto.ChangePasswordDTO;
 import org.scoula.member.dto.MemberDTO;
 import org.scoula.member.dto.MemberJoinDTO;
+import org.scoula.member.dto.MemberUpdateDTO;
+import org.scoula.member.exception.PasswordMissmatchException;
 import org.scoula.member.mapper.MemberMapper;
 import org.scoula.security.account.domain.AuthVO;
 import org.scoula.security.account.domain.MemberVO;
@@ -60,6 +63,31 @@ public class MemberServiceImpl implements MemberService{
 
 		// 저장 후 조회하여 DTO 반환
 		return get(member.getUsername());
+	}
+
+	@Override
+	public MemberDTO update(MemberUpdateDTO member) {
+		MemberVO vo = mapper.get(member.getUsername());
+		if (!passwordEncoder.matches(member.getPassword(), vo.getPassword())) {
+			throw new PasswordMissmatchException();
+		}
+
+		mapper.update(member.toVO());
+		saveAvatar(member.getAvatar(), member.getUsername());
+		return get(member.getUsername());
+	}
+
+	@Override
+	public void changePassword(ChangePasswordDTO changePassword) {
+		MemberVO member = mapper.get(changePassword.getUsername());
+
+		if (!passwordEncoder.matches(changePassword.getOldPassword(), member.getPassword())) {
+			throw new PasswordMissmatchException();
+		}
+
+		changePassword.setNewPassword(passwordEncoder.encode(changePassword.getNewPassword()));
+
+		mapper.updatePassword(changePassword);
 	}
 
 	// 아바타 파일 저장

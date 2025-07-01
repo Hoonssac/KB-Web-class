@@ -13,7 +13,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtProcessor {
-	static private final long TOKEN_VALID_MILISECOND = 1000L * 60 * 5; // 5 분
+	static private final long TOKEN_VALID_MILISECOND = 1000L * 60 * 20; // 5 분
 
 	private String secretKey = "aVeryLongSecureJwtSecretKeyThatIsAtLeast32BytesLong!";
 	private Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));

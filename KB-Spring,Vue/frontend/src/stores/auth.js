@@ -15,7 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
   const state = ref({ ...initState }); // 통으로 교체 작업, 객체 복사
   const isLogin = computed(() => !!state.value.user.username); // 로그인 여부
   const username = computed(() => state.value.user.username); // 로그인 사용자 ID
-  const email = computed(() => state.value.usern.email); // 로그인 사용자 email
+  const email = computed(() => state.value.user.email); // 로그인 사용자 email
 
   const login = async (member) => {
     // state.value.token = 'test token';
@@ -45,7 +45,21 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
+  const changeProfile = (member) => {
+    state.value.user.email = member.email;
+    localStorage.setItem('auth', JSON.stringify(state.value));
+  };
+
   load();
 
-  return { state, username, email, isLogin, login, logout, getToken };
+  return {
+    state,
+    username,
+    email,
+    isLogin,
+    changeProfile,
+    login,
+    logout,
+    getToken,
+  };
 });

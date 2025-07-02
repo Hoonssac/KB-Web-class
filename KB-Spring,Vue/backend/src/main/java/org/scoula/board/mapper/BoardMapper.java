@@ -8,22 +8,14 @@ import org.scoula.board.domain.BoardVO;
 
 @Mapper
 public interface BoardMapper {
+	List<BoardVO> getList();
+	BoardVO get(Long no);
+	void create(BoardVO board);
+	int update(BoardVO boardVO);
+	int delete(Long no);
 
-	public List<BoardVO> getList();
-
-	public BoardVO get(Long no);
-
-	public void create(BoardVO board);
-
-	public int update(BoardVO boardVO);
-
-	public int delete(Long no);
-
-	public void createAttachment(BoardAttachmentVO attach);
-
-	public List<BoardAttachmentVO> getAttachmentList(Long bno);
-
-	public BoardAttachmentVO getAttachment(Long no);
-
-	public int deleteAttachment(Long no);
+	void createAttachment(BoardAttachmentVO attach);
+	List<BoardAttachmentVO> getAttachmentList(Long bno);
+	BoardAttachmentVO getAttachment(Long no);
+	int deleteAttachment(Long no);
 }

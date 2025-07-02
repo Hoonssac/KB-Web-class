@@ -46,6 +46,7 @@ public class BoardDTO {
 	// 첨부 파일
 	private List<BoardAttachmentVO> attaches;
 
+	// VO -> DTO
 	public static BoardDTO of(BoardVO vo) {
 		return vo == null ? null : BoardDTO.builder()
 			.no(vo.getNo())
@@ -58,6 +59,7 @@ public class BoardDTO {
 			.build();
 	}
 
+	// DTO -> VO
 	public BoardVO toVo() {
 		return BoardVO.builder()
 			.no(no)

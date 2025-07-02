@@ -14,28 +14,7 @@
   <!-- 첨부 파일 목록 -->
   <div class="text-end">
     <div v-for="file in article.attaches" :key="file.no" class="attach">
-      <span>
-        <i class="fa-solid fa-paperclip"></i>
-        {{ file.filename }}
-      </span>
-    </div>
-  </div>
-  <h1>{{ article.title }}</h1>
-  <div class="my-3 d-flex justify-content-between">
-    <div>
-      <i class="fa-solid fa-user"></i>
-      {{ article.writer }}
-    </div>
-    <div>
-      <i class="fa-regular fa-clock"></i>
-      {{ moment(article.updateDate).format('YYYY-MM-DD HH:mm') }}
-    </div>
-  </div>
-  <hr />
-  <!-- 첨부 파일 목록 -->
-  <div class="text-end">
-    <div v-for="file in article.attaches" :key="file.no" class="attach">
-      <span>
+      <span @click="download(file.no)">
         <i class="fa-solid fa-paperclip"></i>
         {{ file.filename }}
       </span>
@@ -99,6 +78,12 @@ const remove = async () => {
 
 const load = async () => {
   article.value = await api.get(no);
+  console.log('DETAIL', article.value);
+};
+
+const download = async (no) => {
+  const URL = '/api/board/download/' + no;
+  await downloadFile(URL);
 };
 
 load();

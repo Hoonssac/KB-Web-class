@@ -4,6 +4,7 @@ package org.scoula.config;
 import org.scoula.security.config.SecurityConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -45,7 +46,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
 
-		return new Filter[] {characterEncodingFilter};
+		return new Filter[] {characterEncodingFilter, new MultipartFilter()};
 	}
 
 	@Override

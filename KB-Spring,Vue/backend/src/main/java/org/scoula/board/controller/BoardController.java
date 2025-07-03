@@ -1,6 +1,7 @@
 package org.scoula.board.controller;
 
 import java.io.File;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.dto.BoardDTO;
 import org.scoula.board.service.BoardService;
+import org.scoula.common.pagination.Page;
+import org.scoula.common.pagination.PageRequest;
 import org.scoula.common.util.UploadFiles;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,17 +47,22 @@ public class BoardController {
 
 	final private BoardService service;
 
-	// 게시글 목록 조회
-	@ApiOperation(value = "게시글 목록", notes = "게시글 목록을 얻는 API")
-	@ApiResponses(value = {
-		@ApiResponse(code = 200, message = "성공적으로 요청이 처리되었습니다.", response = BoardDTO.class),
-		@ApiResponse(code = 400, message = "잘못된 요청입니다."),
-		@ApiResponse(code = 500, message = "서버에서 오류가 발생했습니다.")
-	})
 	@GetMapping("")
-	public ResponseEntity<List<BoardDTO>> getList() {
-		return ResponseEntity.ok(service.getList());
+	public ResponseEntity<Page> getList(PageRequest pageRequest) {
+		return ResponseEntity.ok(service.getPage(pageRequest));
 	}
+
+	// 게시글 목록 조회
+	// @ApiOperation(value = "게시글 목록", notes = "게시글 목록을 얻는 API")
+	// @ApiResponses(value = {
+	// 	@ApiResponse(code = 200, message = "성공적으로 요청이 처리되었습니다.", response = BoardDTO.class),
+	// 	@ApiResponse(code = 400, message = "잘못된 요청입니다."),
+	// 	@ApiResponse(code = 500, message = "서버에서 오류가 발생했습니다.")
+	// })
+	// @GetMapping("")
+	// public ResponseEntity<List<BoardDTO>> getList() {
+	// 	return ResponseEntity.ok(service.getList());
+	// }
 
 	// 게시글 상세 조회
 	@ApiOperation(value = "상세정보 얻기", notes = "게시글 상세 정보를 얻는 API")
@@ -60,11 +71,13 @@ public class BoardController {
 		@ApiResponse(code = 400, message = "잘못된 요청입니다."),
 		@ApiResponse(code = 500, message = "서버에서 오류가 발생했습니다.")
 	})
-	@GetMapping("/{no}")
+	@GetMapping(value = "/{no}", produces = "application/json; charset=UTF-8")
 	public ResponseEntity<BoardDTO> getById(
 		@ApiParam(value = "게시글 ID", required = true, example = "1")
 		@PathVariable Long no) {
-		return ResponseEntity.ok(service.get(no));
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+		return new ResponseEntity<>(service.get(no), headers, HttpStatus.OK);
 	}
 
 	// 게시글 생성
@@ -74,11 +87,14 @@ public class BoardController {
 		@ApiResponse(code = 400, message = "잘못된 요청입니다."),
 		@ApiResponse(code = 500, message = "서버에서 오류가 발생했습니다.")
 	})
-	@PostMapping("")
+	
+	@PostMapping(value = "", produces = "application/json; charset=UTF-8")
 	public ResponseEntity<BoardDTO> create(
 		@ApiParam(value = "게시글 객체", required = true)
 		BoardDTO board) {
-		return ResponseEntity.ok(service.create(board));
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+		return new ResponseEntity<>(service.create(board), headers, HttpStatus.OK);
 	}
 
 	// 게시글 수정
@@ -104,7 +120,7 @@ public class BoardController {
 	    @ApiResponse(code = 400, message = "잘못된 요청입니다."),
 	    @ApiResponse(code = 500, message = "서버에서 오류가 발생했습니다.")
 	})
-	@DeleteMapping("/{no}")
+	@DeleteMapping(value = "/{no}", produces = "application/json; charset=UTF-8")
 	public ResponseEntity<BoardDTO> delete(
 		@ApiParam(value = "게시글 ID", required = true, example = "1")
 		@PathVariable Long no) {

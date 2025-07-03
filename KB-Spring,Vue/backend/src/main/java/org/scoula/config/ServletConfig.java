@@ -8,6 +8,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import java.nio.charset.Charset;
+import java.util.List;
+
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -20,6 +26,15 @@ import org.springframework.web.servlet.view.JstlView;
 	"org.scoula.member.controller"
 }) // Spring MVC용 컴포넌트 등록을 위한 스캔 패키지
 public class ServletConfig implements WebMvcConfigurer {
+
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		StringHttpMessageConverter stringConverter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		converters.add(stringConverter);
+		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
+		jsonConverter.setDefaultCharset(Charset.forName("UTF-8"));
+		converters.add(jsonConverter);
+	}
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {

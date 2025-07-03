@@ -4,8 +4,12 @@ import java.util.List;
 
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.dto.BoardDTO;
+import org.scoula.common.pagination.Page;
+import org.scoula.common.pagination.PageRequest;
 
 public interface BoardService {
+	Page<BoardDTO> getPage(PageRequest pageRequest);
+
 	List<BoardDTO> getList();
 
 	BoardDTO get(Long no);

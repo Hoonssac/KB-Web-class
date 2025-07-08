@@ -16,11 +16,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.context.annotation.PropertySource;
 
 import lombok.extern.log4j.Log4j2;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {RootConfig.class})
+@PropertySource({"classpath:/application.properties"})
 @Log4j2
 class RootConfigTest {
 

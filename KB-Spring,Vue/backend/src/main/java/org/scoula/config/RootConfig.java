@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -23,8 +24,8 @@ import lombok.extern.log4j.Log4j2;
 
 @Configuration
 @PropertySource({"classpath:/application.properties"})
-@MapperScan(basePackages = {"org.scoula.board.mapper", "org.scoula.member.mapper"})
-@ComponentScan(basePackages = {"org.scoula.board.service", "org.scoula.member.service"})
+@MapperScan(basePackages = {"org.scoula.board.mapper", "org.scoula.member.mapper", "org.scoula.travel.mapper"})
+@ComponentScan(basePackages = {"org.scoula.board.service", "org.scoula.member.service", "org.scoula.travel.service"})
 @Log4j2
 @EnableTransactionManagement
 public class RootConfig {

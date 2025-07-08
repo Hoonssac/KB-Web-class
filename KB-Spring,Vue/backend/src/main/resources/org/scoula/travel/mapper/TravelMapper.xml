@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.travel.mapper.TravelMapper">
+
+    <resultMap id="imagesMap" type="org.scoula.travel.domain.TravelImageVO">
+        <id column="tino" property="no"/>
+        <result column="filename" property="filename"/>
+        <result column="travel_no" property="travelNo"/>
+    </resultMap>
+
+    <resultMap id="travelMap" type="org.scoula.travel.domain.TravelVO">
+        <id column="no" property="no"/>
+        <result column="district" property="district"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="address" property="address"/>
+        <result column="phone" property="phone"/>
+        <collection property="images" resultMap="imagesMap"/>
+    </resultMap>
+
+    <sql id="travel-select">
+        select t.*, ti.no as tino, ti.filename, ti.travel_no
+        from tbl_travel t
+                 left outer join tbl_travel_image ti
+                                 on t.no = ti.travel_no
+    </sql>
+
+    <select id="getTotalCount" resultType="java.lang.Integer">
+        select count(*)
+        from tbl_travel
+    </select>
+
+    <select id="getDistricts" resultType="java.lang.String">
+        select distinct(district)
+        from tbl_travel
+        order by district
+    </select>
+
+    <select id="getTravels" resultMap="travelMap">
+        <include refid="travel-select"/>
+        order by district, title
+    </select>
+
+    <select id="getPage" resultMap="travelMap">
+        select *
+        from tbl_travel
+        order by district, title limit #{offset}, #{amount}
+    </select>
+
+    <select id="getTravelByDistrict" resultMap="travelMap">
+        <include refid="travel-select"/>
+        where district = #{district}
+        order by district
+    </select>
+
+    <select id="getTravel" resultMap="travelMap">
+        <include refid="travel-select"/>
+        where t.no = #{no}
+    </select>
+
+    <select id="getImages" resultType="org.scoula.travel.domain.TravelImageVO">
+        select *
+        from tbl_travel_image
+        where travel_no = #{travelNo}
+    </select>
+
+    <select id="getImage" resultType="org.scoula.travel.domain.TravelImageVO">
+        select *
+        from tbl_travel_image
+        where no = #{no}
+    </select>
+
+</mapper>

@@ -13,6 +13,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
 img {
   object-fit: cover;
@@ -24,3 +25,16 @@ img {
   border: 1px solid red;
 }
 </style>
+
+<script setup>
+import { ref } from 'vue';
+const props = defineProps({
+  images: { Type: Array, required: true },
+});
+console.log(props.images);
+let activeImage = ref(props.images[0].url);
+const onClick = (ix) => {
+  console.log(ix, props.images[ix].url);
+  activeImage.value = props.images[ix].url;
+};
+</script>

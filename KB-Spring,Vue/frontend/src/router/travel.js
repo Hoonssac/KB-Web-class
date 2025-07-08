@@ -6,7 +6,7 @@ export default [
   },
   {
     path: '/travel/detail/:no',
-    name: '/travel/detail',
+    name: 'travel/detail',
     component: () => import('../pages/travel/TravelDetailPage.vue'),
   },
 ];

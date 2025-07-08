@@ -30,11 +30,10 @@ class JwtProcessorTest {
 
 	@Test
 	void validateToken() {
-		// 5분 경과 후 테스트
-		String token = "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyMCIsImlhdCI6MTc1MDcyOTIyNSwiZXhwIjoxNzUwNzI5NTI1fQ.Vfh5SB4pwBt1oQfWMpHVBc5b6RgZaSbHVP_PT_jM5ShzXXoUOc-lkVnLptAKCFrP";
-
-		boolean isValid = jwtProcessor.validateToken(token); // 5분 경과 후면 예외 발생
+		String username = "user0";
+		String token = jwtProcessor.generateToken(username);
+		boolean isValid = jwtProcessor.validateToken(token);
 		log.info(isValid);
-		assertTrue(isValid); // 5분 전이면 true;
+		assertTrue(isValid);
 	}
 }

@@ -1,3 +1,33 @@
+<script setup>
+import api from '@/api/travelApi';
+import { ref, reactive, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { VueAwesomePaginate } from 'vue-awesome-paginate';
+import TravelCard from '@/components/travel/TravelCard.vue';
+const cr = useRoute();
+const router = useRouter();
+const page = ref({});
+const travels = computed(() => page.value.list);
+const pageRequest = reactive({
+  page: parseInt(cr.query.page) || 1,
+  amount: parseInt(cr.query.amount) || 12,
+});
+const handlePageChange = async (pageNum) => {
+  router.push({ query: { page: pageNum, amount: pageRequest.amount } });
+};
+watch(cr, async (newValue) => {
+  pageRequest.page = parseInt(cr.query.page);
+  pageRequest.amount = parseInt(cr.query.amount);
+  await load(pageRequest);
+});
+const load = async (query) => {
+  try {
+    page.value = await api.getList(query);
+    console.log(page.value);
+  } catch {}
+};
+load(pageRequest);
+</script>
 <template>
   <div>
     <h1 class="mb-3">
@@ -18,8 +48,7 @@
         :total-items="page.totalCount"
         :items-per-page="pageRequest.amount"
         :max-pages-shown="5"
-        :show-
-        ending-buttons="true"
+        :showending-buttons="true"
         v-model="pageRequest.page"
         @click="handlePageChange"
       >
@@ -37,39 +66,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import api from '@/api/travelApi';
-import { ref, reactive, computed, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import TravelCard from '@/components/travel/TravelCard.vue';
-const cr = useRoute();
-const router = useRouter();
-const page = ref({});
-const travels = computed(() => page.value.list);
-const pageRequest = reactive({
-  page: parseInt(cr.query.page) || 1,
-  amount: parseInt(cr.query.amount) || 12,
-});
-// 페이지네이션 페이지 변경
-const handlePageChange = async (pageNum) => {
-  router.push({
-    query: { page: pageNum, amount: pageRequest.amount },
-  });
-};
-// pageRequest의 값 변경된 경우 호출
-watch(cr, async (newValue) => {
-  pageRequest.page = parseInt(cr.query.page);
-  pageRequest.amount = parseInt(cr.query.amount);
-  await load(pageRequest);
-});
-const load = async (query) => {
-  try {
-    page.value = await api.getList(query);
-    console.log(page.value);
-  } catch {}
-};
-load(pageRequest);
-</script>
-
-<style></style>
